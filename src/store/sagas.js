@@ -1,16 +1,13 @@
-import {put, call, all, spawn, takeEvery} from 'redux-saga/effects';
-import {apiService} from './services';
-import * as types from './constants';
-import * as actions from './actions';
+import { call, all, spawn } from 'redux-saga/effects';
+import articlesSagas from '../features/Articles/store/sagas'
 
 export default function* rootSaga() {
   const sagas = [
-    // Example watcher
-    // getBalanceWatcher
+    ...articlesSagas
   ];
   yield all(
     sagas.map((saga) =>
-      spawn(function* () {
+      spawn(function*() {
         while (true) {
           try {
             yield call(saga);
