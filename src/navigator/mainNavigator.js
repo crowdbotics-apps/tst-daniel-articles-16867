@@ -18,13 +18,12 @@ const ArticlesNavigator = createStackNavigator({
       title: "Article List",
       headerLeft: <SlideMenuIcon navigationProps={navigation} />,
     }),
+    params: {
+      detail: "Article"
+    }
   },
   Article: {
     screen: Article,
-    navigationOptions: ({ navigation }) => ({
-      title: "Article",
-      headerLeft: <SlideMenuIcon navigationProps={navigation} />,
-    }),
   },
 });
 

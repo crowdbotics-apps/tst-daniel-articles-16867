@@ -10,12 +10,12 @@ import { styles } from "./styles";
 import { connect } from "react-redux";
 
 function ArticleList(props) {
-  const { navigation, articles } = props;
+  const { navigation, articles, detail } = props;
 
   renderItem = ({ item }) => (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate("Article", { id: item.id })
+        navigation.navigate(detail, { id: item.id })
       }}>
       <ImageBackground source={item.image} style={styles.image}>
         <View style={styles.card}>
@@ -39,8 +39,11 @@ function ArticleList(props) {
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const detail = ownProps.navigation.getParam("detail", "Article");
+
   return {
+    detail: detail,
     articles: state.articlesReducer.articles,
   }
 }
