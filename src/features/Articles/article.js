@@ -25,6 +25,7 @@ function Article(props) {
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.getParam("id", null);
+
   return {
     article: state.articlesReducer.articles.find(record => record.id == id)
   }

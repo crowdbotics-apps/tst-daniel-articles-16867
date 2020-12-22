@@ -2,12 +2,7 @@ import * as types from "./constants"
 
 const initialState = {
   api: {},
-  articles: [
-    {
-      id: 1,
-      title: "ok"
-    }
-  ],
+  articles: [],
 }
 
 export default function reducer(state = initialState, action) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   FlatList,
@@ -8,14 +8,17 @@ import {
 } from 'react-native';
 import { styles } from "./styles";
 import { connect } from "react-redux";
+import { article_list } from "./store/actions";
 
-function ArticleList(props) {
-  const { navigation, articles, detail } = props;
+class ArticleList extends Component {
+  componentDidMount() {
+    this.props.load();
+  }
 
-  renderItem = ({ item }) => (
+  renderItem = (item) => (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate(detail, { id: item.id })
+        navigation.navigate(this.props.detail, { id: item.id })
       }}>
       <ImageBackground source={item.image} style={styles.image}>
         <View style={styles.card}>
@@ -30,13 +33,21 @@ function ArticleList(props) {
     </TouchableOpacity>
   );
 
-  return (
-    <FlatList
-      data={articles}
-      renderItem={renderItem}
-      keyExtractor={item => `${item.id}`}
-    />
-  );
+  render() {
+    const { articles } = this.props;
+    return (
+      <View>
+        <FlatList
+          data={articles}
+          renderItem={this.renderItem}
+          keyExtractor={item => `${item.id}`}
+        />
+        <Text>Total of Articles: {articles.length}</Text>
+        <Text>isFetching: {api.isFetching}</Text>
+      </View>
+    );
+
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -48,6 +59,10 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => {
+  return {
+    load: () => dispatch(article_list())
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleList)
