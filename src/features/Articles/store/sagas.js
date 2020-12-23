@@ -1,11 +1,11 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import * as types from "./constants"
 import * as actions from "./actions"
-import service from "./services"
+import { article_list, article_read } from "./services"
 
 function* article_listWorker(action) {
   try {
-    const result = yield call(service.article_list, action)
+    const result = yield call(article_list, action)
     yield put(actions.article_listSucceeded(result, action))
   } catch (err) {
     yield put(actions.article_listFailed(err, action))
@@ -18,7 +18,7 @@ function* article_listWatcher() {
 
 function* article_readWorker(action) {
   try {
-    const result = yield call(service.article_read, action)
+    const result = yield call(article_read, action)
     yield put(actions.article_readSucceeded(result, action))
   } catch (err) {
     yield put(actions.article_readFailed(err, action))

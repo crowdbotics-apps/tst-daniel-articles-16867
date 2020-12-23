@@ -1,7 +1,9 @@
 import * as types from "./constants"
 
 const initialState = {
-  api: {},
+  api: {
+    isFetching: false,
+  },
   articles: [],
 }
 

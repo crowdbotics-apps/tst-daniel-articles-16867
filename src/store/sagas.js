@@ -2,9 +2,7 @@ import { call, all, spawn } from 'redux-saga/effects';
 import articlesSagas from '../features/Articles/store/sagas'
 
 export default function* rootSaga() {
-  const sagas = [
-    ...articlesSagas
-  ];
+  const sagas = articlesSagas;
   yield all(
     sagas.map((saga) =>
       spawn(function*() {

@@ -36,15 +36,11 @@ class ArticleList extends Component {
   render() {
     const { articles } = this.props;
     return (
-      <View>
-        <FlatList
-          data={articles}
-          renderItem={this.renderItem}
-          keyExtractor={item => `${item.id}`}
-        />
-        <Text>Total of Articles: {articles.length}</Text>
-        <Text>isFetching: {api.isFetching}</Text>
-      </View>
+      <FlatList
+        data={articles}
+        renderItem={this.renderItem}
+        keyExtractor={item => `${item.id}`}
+      />
     );
 
   }
