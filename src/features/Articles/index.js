@@ -15,7 +15,7 @@ class ArticleList extends Component {
     this.props.load();
   }
 
-  renderItem = (item) => (
+  renderItem = ({ item }) => (
     <TouchableOpacity
       onPress={() => {
         navigation.navigate(this.props.detail, { id: item.id })
