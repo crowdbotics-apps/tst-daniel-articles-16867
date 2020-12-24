@@ -18,7 +18,7 @@ class ArticleList extends Component {
   renderItem = ({ item }) => (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate(this.props.detail, { id: item.id })
+        this.props.navigation.navigate(this.props.detail, { id: item.id })
       }}>
       <ImageBackground source={item.image} style={styles.image}>
         <View style={styles.card}>
