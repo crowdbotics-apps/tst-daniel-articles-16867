@@ -6,7 +6,6 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import SplashScreen from "../features/SplashScreen";
 import SideMenu from './sideMenu';
 //@BlueprintImportInsertion
-import BlankScreen116143Navigator from '../features/BlankScreen116143/navigator';
 import Articles from '../features/Articles';
 import Article from '../features/Articles/article';
 import { SlideMenuIcon } from './slideMenuIcon';
@@ -29,8 +28,6 @@ const ArticlesNavigator = createStackNavigator({
 });
 
 const AppNavigator = {
-  //@BlueprintNavigationInsertion
-BlankScreen116143: { screen: BlankScreen116143Navigator },
   Articles: {
     screen: ArticlesNavigator
   },
